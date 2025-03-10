@@ -45,6 +45,12 @@ strategy_play = {
     'Z' : 'win'
 }
 
+# rps_compare: list -> int
+# purpose: rps_compare determines which player wins a rock paper scissors game
+#   and returns a value based on the outcome and item chosen.  The string that
+#   makes up each list element are compared to the decryption dictionary to get
+#   which item was chosen (which is also a dictionary containing the value of the choice)
+# example: rps_compare(['A', 'X']) = rps_compare(rock, rock) -> 4
 def rps_compare(choices):
     npc = decryption.get(choices[0])
     pc = decryption.get(choices[1])
@@ -57,6 +63,11 @@ def rps_compare(choices):
     else:
         return pc['value'] + 3
 
+# compare_pt2: list -> int
+# purpose: determines the desired win-loss state and sends the values necessary
+#   to achieve it to rps_compare
+# example: compare_pt2(['A', 'Y']) -> 4
+    
 def compare_pt2(strategy):
     npc = decryption.get(strategy[0])
     desired_state = strategy_play.get(strategy[1])
